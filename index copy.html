@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taibah Teacher of the Week</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+
+
+/* Base Styles & Variables */
+:root {
+    --primary-color: #4CAF50;
+    --primary-hover: #3e8e41;
+    --primary-dark: #3d723f;
+    --text-dark: #333;
+    --text-medium: #5a5a5a;
+    --text-light: #767676;
+    --border-color: #e0e0e0;
+    --background-color: #f2f2f0;
+    --card-background: #fff;
+    --input-background: #fcfcfc;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --transition-fast: 0.2s;
+    --transition-normal: 0.3s;
+    --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    height: 80vh;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#supportLink {
+    color: #03a245;
+}
+
+/* Page Layout */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.app-header {
+    background-color: #004d00;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+}
+
+.url-path {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.url-path i {
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--background-color);
+}
+
+/* Header Styles */
+.header-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+.header-buttons a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.header-buttons a:hover {
+    color: #f8d02b;
+}
+
+/* School Logo Styles */
+.school-logo, .school-logo1 {
+    margin-bottom: 30px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.logo {
+    max-width: 120px;
+    transition: transform 0.3s ease;
+}
+
+.logo1 {
+    width: 155px;
+    height: 100px;
+    border-radius: 5px;
+    animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.headings {
+    margin: 0 auto;
+}
+
+.headings h1, .headings h2 {
+    color: rgb(6, 103, 22);
+    animation: slideIn 2s ease-in-out;
+    text-align: center;
+}
+
+.headings h2 {
+    margin-top: 10px;
+    font-weight: 10;
+    font-size: 20px;
+}
+
+.headings h1 {
+    font-size: 25px;
+}
+
+/* Login Container */
+.login-container {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: #004d00 1px solid;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px 40px;
+    margin-top: 0px;
+    animation: fadeIn 0.8s ease-out, slideUp 0.6s ease-out;
+}
+
+/* Logo Section */
+.logo-section {
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.logo {
+    width: 250px;
+    height: auto;
+    transition: transform var(--transition-normal);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.title {
+    font-size: 28px;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: var(--text-medium);
+    font-size: 16px;
+}
+
+/* Divider */
+.login-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-divider::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background-color: var(--primary-color);
+    left: 0;
+    animation: dividerGrow 3s ease-in-out infinite;
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 25px;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.welcome-title {
+    font-size: 24px;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.welcome-text {
+    color: var(--text-medium);
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Form Elements */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.form-group:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+label {
+    font-size: 14px;
+    color: var(--text-medium);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--input-background);
+    color: var(--text-dark);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    width: 100%;
+    text-align: left;
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.form-input::placeholder {
+    color: #b0b0b0;
+}
+
+/* Password Input */
+.password-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 999;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color var(--transition-fast);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.toggle-password:hover {
+    color: var(--text-dark);
+}
+
+.toggle-password:focus {
+    outline: none;
+}
+
+.toggle-password i {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #110202;
+    background: none;
+    border: none;
+    animation: pulseIcon 2s infinite alternate;
+    z-index: 999;
+}
+
+/* Eye icon base styles */
+#togglePassword i {
+    color: rgb(9, 1, 1);
+    padding: 10px 10px;
+    font-size: 18px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    transition: 0.4s ease-in-out;
+    position: relative;
+    margin: 0 auto;
+    background: transparent;
+    animation: none;
+    z-index: 999;
+}
+
+/* Button Hover Effect */
+#togglePassword i:hover {
+    transform: scale(1.1);
+    color: #000000;
+    text-shadow: 0 0 10px rgba(0, 89, 21, 0.5);
+}
+
+/* Sign In Button */
+.sign-in-button {
+    background-color: rgb(7, 112, 7);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    left: -100%;
+    transition: left 0.5s ease;
+}
+
+.sign-in-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.sign-in-button:hover::before {
+    left: 100%;
+}
+
+.sign-in-button:active {
+    transform: translateY(1px);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+}
+
+.button-loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    position: absolute;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Support Link */
+.support-link {
+    text-align: center;
+    margin-top: 20px;
+    animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+.support-link a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color var(--transition-fast);
+}
+
+.support-link a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Hide browser's default eye icon */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+    margin: 0;
+}
+
+/* Form States */
+.form-input.error {
+    border-color: #e74c3c;
+}
+
+.form-input.error:focus {
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.form-input.success {
+    border-color: #2ecc71;
+}
+
+.form-input.success:focus {
+    box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
+}
+
+.form-feedback {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+    min-height: 16px;
+}
+
+/* Loading state */
+.sign-in-button.loading {
+    background-color: var(--primary-dark);
+    cursor: not-allowed;
+}
+
+.sign-in-button.loading .button-text {
+    opacity: 0;
+}
+
+.sign-in-button.loading .button-loader {
+    display: block;
+}
+
+/* Readonly input styling */
+.form-input[readonly] {
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+    color: #aaa;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); }
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dividerGrow {
+    0% { width: 0; left: 0; }
+    50% { width: 100%; left: 0; }
+    100% { width: 0; left: 100%; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles - Tablet */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 25px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .welcome-title {
+        font-size: 22px;
+    }
+}
+
+/* Responsive Styles - Mobile Large */
+@media (max-width: 552px) {
+
+
+    .header-buttons {
+        gap: 30px;
+    }
+
+    body {
+        height: 90vh;
+    }
+
+    .logo1 {
+        width: 90px;
+        height: 60px;
+    }
+
+    .headings h1 {
+        font-size: 20px;
+    }
+
+    .headings h2 {
+        font-size: 18px;
+    }
+
+    .login-container {
+        margin-top: 0px;
+    }
+}
+
+/* Responsive Styles - Mobile Small */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+    }
+    
+    .logo {
+        width: 100px;
+    }
+    
+    .title {
+        font-size: 22px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    .welcome-title {
+        font-size: 20px;
+    }
+    
+    .form-input {
+        padding: 10px 12px;
+    }
+    
+    .sign-in-button {
+        padding: 12px;
+    }
+}
+
+/* Responsive Styles - Mobile Extra Small */
+@media (max-width: 360px) {
+    .header-buttons {
+        gap: 30px;
+    }
+
+    .header-buttons p {
+        font-size: 14px;
+    }
+
+    .logo1 {
+        width: 70px;
+        height: 48px;
+        border-radius: 2px;
+        margin-top: -15px;
+        margin-left: -10px;
+    }
+
+    .headings h1 {
+        font-size: 20px;
+        margin-top: -30px;
+    }
+
+    .headings h2 {
+        font-size: 14px;
+        margin-top: -5px;
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .login-container {
+        margin-top: 0px;
+        max-width: 90%;
+        border: #4CAF50 0.5px solid;
+    }
+
+    .form-input {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .login-form button {
+        padding: 8px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-dark: #f0f0f0;
+        --text-medium: #d0d0d0;
+        --text-light: #a0a0a0;
+        --border-color: #444;
+        --background-color: #2d2d2d;
+        --card-background: #333;
+        --input-background: #3a3a3a;
+    }
+    
+    .toggle-password {
+        color: #a0a0a0;
+    }
+    
+    .form-input::placeholder {
+        color: #666;
+    }
+}
+
+</style>
+
+
+<body>
+    <div class="page-wrapper">
+        <header class="app-header">
+            <div class="header-buttons">
+                <a href=""> <p class="school-resources">
+                   Academic Resource Link </p>
+                 </a>
+                <a href="https://tis.ac.ug/"> <p class="main-website" >
+                   School Website
+                </p> </a>
+                </div>        
+        </header>
+
+        <div class="school-logo1">
+            <img src="/TEACHER OF THE WEEK WEB APP/Tiss-logo.jpeg" alt="School Logo" class="logo1">
+            </div>
+
+        <div class="headings">
+            <h1>Teacher of the Week</h1>
+            <h2>Recognizing and celebrating the best teacher every week.</h2>
+        </div>
+    
+        
+        <main class="main-content">
+            <div class="login-container">
+
+                
+                <div class="login-divider"></div>
+                
+                <!-- <div class="welcome-section">
+                    <h2 class="welcome-title">Teacher of the Week</h2>
+                    <p class="welcome-text">Recognizing and celebrating the best Teacher every week</p>
+                </div> -->
+                
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Enter User Name</label>
+                        <input type="text" id="username" 
+                        placeholder="Your fedena no. e.g: E001" 
+                        class="form-input" 
+                        autocomplete="off"                        
+                        autocorrect="off" 
+                        spellcheck="false"
+                        data-lpignore="true"
+                        name="username_prevent_autofill"> 
+                        <span class="form-feedback"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Enter Password</label>
+                        <div class="password-container">
+                            <input type="password" 
+                            class="form-input"
+                            id="password" 
+                            placeholder="E.g: Godfrey051" 
+                            autocomplete="new-password" 
+                            data-lpignore="true"
+                            name="password_prevent_autofill"
+                            readonly
+                            onfocus="this.removeAttribute('readonly');"
+                            required>
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+
+
+
+                        <span class="form-feedback"></span>
+                    </div>
+
+                    <div class="form-group">
+                    <select id="roleSelect" class="form-input" >
+                        <option value="" disabled selected >Select category</option>
+                        <option value="teacher">Vote Teacher</option>
+                        <option value="student">Vote Student</option>
+                    </select>
+                    </div>
+                    
+                    <button type="submit" class="sign-in-button">
+                        <span class="button-text">Login</span>
+                        <div class="button-loader"></div>
+                    </button>
+                </form>
+                
+                <div class="support-link">
+                    <p> Having trouble?<a href="#" id="supportLink"> Contact IT support</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Display the current year in the page (if needed)
+            document.getElementById("year").textContent = new Date().getFullYear();
+    
+            // Toggle Password Visibility
+            const togglePasswordBtn = document.getElementById("togglePassword");
+            const passwordField = document.getElementById("password");
+            
+            if (togglePasswordBtn && passwordField) {
+                togglePasswordBtn.addEventListener("click", function() {
+                    const toggleIcon = this.querySelector("i");
+                    
+                    if (passwordField.type === "password") {
+                        passwordField.type = "text";
+                        toggleIcon.classList.remove("fa-eye");
+                        toggleIcon.classList.add("fa-eye-slash");
+                    } else {
+                        passwordField.type = "password";
+                        toggleIcon.classList.remove("fa-eye-slash");
+                        toggleIcon.classList.add("fa-eye");
+                    }
+                });
+                
+                // Make icon more visible when typing
+                passwordField.addEventListener('input', function() {
+                    const toggleIcon = document.querySelector('#togglePassword i');
+                    if (toggleIcon) {
+                        if (this.value.length > 0) {
+                            toggleIcon.style.color = '#333';
+                            toggleIcon.style.opacity = '1';
+                        } else {
+                            toggleIcon.style.color = '#777';
+                            toggleIcon.style.opacity = '0.7';
+                        }
+                    }
+                });
+            }
+    // Support link handler - use the correct selector that matches your HTML
+    const supportLink = document.querySelector('.support a') || document.querySelector('#submit1');
+    if (supportLink) {
+        supportLink.addEventListener('click', function(e) {
+            // This will be handled by the href attribute, but included for compatibility
+            // window.location.href = 'mailto:isaacpaul1232@gmail.com?subject=Support%20Request';
+            console.log('Support link clicked');
+        });
+    }
+    const toggleIcon = document.querySelector('#togglePassword i');
+    
+    if (passwordField && toggleIcon) {
+        // Make icon more visible when typing
+        passwordField.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                toggleIcon.style.color = '#ffffff';
+                toggleIcon.style.textShadow = '0 0 5px rgba(255, 255, 255, 0.5)';
+                toggleIcon.style.opacity = '1';
+            } else {
+                toggleIcon.style.color = 'rgba(255, 255, 255, 0.5)';
+                toggleIcon.style.textShadow = 'none';
+                toggleIcon.style.opacity = '0.5';
+            }
+        });
+        
+        // Reset when focus is lost
+        passwordField.addEventListener('blur', function() {
+            if (this.value.length === 0) {
+                toggleIcon.style.color = 'rgba(255, 255, 255, 0.5)';
+                toggleIcon.style.textShadow = 'none';
+                toggleIcon.style.opacity = '0.5';
+            }
+        });
+        
+        // Extra visible on hover
+        toggleIcon.parentElement.addEventListener('mouseover', function() {
+            toggleIcon.style.color = '#ffffff';
+            toggleIcon.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.7)';
+            toggleIcon.style.opacity = '1';
+        });
+        
+        toggleIcon.parentElement.addEventListener('mouseout', function() {
+            if (passwordField.value.length === 0 && document.activeElement !== passwordField) {
+                toggleIcon.style.color = 'rgba(255, 255, 255, 0.5)';
+                toggleIcon.style.textShadow = 'none';
+                toggleIcon.style.opacity = '0.5';
+            }
+        });
+    }
+    
+            // Handle Form Submission
+            document.getElementById("loginForm").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent form refresh
+    
+                let username = document.getElementById("username").value.trim();
+                let password = document.getElementById("password").value.trim();
+                const selectedRole = document.getElementById('roleSelect').value;
+    
+                if (!username || !password || selectedRole === "") {
+                    alert("Please fill in all fields and select category to vote.");
+                    return;
+                }
+    
+                // Data from teacher-passwords.html (in real usage, you should fetch or store this securely)
+                const teachers = [
+    { hiddenUsername: 'Angelo', displayedUsername: 'E153', password: 'Angelo001', category: 'teacher'},
+    { hiddenUsername: 'Aston Kwarisiima', displayedUsername: 'E067', password: 'Aston002' },
+    { hiddenUsername: 'Athieno Obo Olowo', displayedUsername: 'E004', password: 'Athieno003' },
+    { hiddenUsername: 'ATUKWASE PIUS', displayedUsername: 'E021', password: 'ATUKWASE004' },
+    { hiddenUsername: 'Azida Namugambe', displayedUsername: 'E044', password: 'Azida005' },
+    { hiddenUsername: 'Benjamin Lugendo', displayedUsername: 'E139', password: 'Benjamin006' },
+    { hiddenUsername: 'Bernard Muwonge', displayedUsername: 'E072', password: 'Bernard007' },
+    { hiddenUsername: 'Bridget Komugisha', displayedUsername: 'E154', password: 'Bridget008' },
+    { hiddenUsername: 'Ceasar Odoch', displayedUsername: 'E142', password: 'Ceasar009' },
+    { hiddenUsername: 'Christine Wanyetse', displayedUsername: 'E118', password: 'Christine010' },
+    { hiddenUsername: 'Dan Employee Muyomba', displayedUsername: 'E133', password: 'Dan011' },
+    { hiddenUsername: 'Daphine Mbabazi', displayedUsername: 'E045', password: 'Daphine012' },
+    { hiddenUsername: 'Denis Ssempiira', displayedUsername: 'E028', password: 'Denis013' },
+    { hiddenUsername: 'Douglas Ssembuusi', displayedUsername: 'E020', password: 'Douglas014' },
+    { hiddenUsername: 'Edgar Kigozi', displayedUsername: 'E120', password: 'Edgar015' },
+    { hiddenUsername: 'Emily Mugoya', displayedUsername: 'E033', password: 'Emily016' },
+    { hiddenUsername: 'Emmanuel Kiyaga', displayedUsername: 'E066', password: 'Emmanuel017' },
+    { hiddenUsername: 'Felix William Erecho', displayedUsername: 'E007', password: 'Felix018' },
+    { hiddenUsername: 'Gadson Gardner Musinguzi', displayedUsername: 'E036', password: 'Gadson019' },
+    { hiddenUsername: 'Geofrey Kibuuka', displayedUsername: 'E064', password: 'Geofrey020' },
+    { hiddenUsername: 'Godfrey Kakembo', displayedUsername: 'E022', password: 'Godfrey021' },
+    { hiddenUsername: 'Isaiah Nyakoojo', displayedUsername: 'E141', password: 'Isaiah022' },
+    { hiddenUsername: 'James Karamagi', displayedUsername: 'E148', password: 'James023' },
+    { hiddenUsername: 'James Kateregga', displayedUsername: 'E055', password: 'James024' },
+    { hiddenUsername: 'Joanita Mubiru', displayedUsername: 'E016', password: 'Joanita025' },
+    { hiddenUsername: 'John Semwezi', displayedUsername: 'E110', password: 'John026' },
+    { hiddenUsername: 'Joseph Daniel Opio', displayedUsername: 'E019', password: 'Joseph027' },
+    { hiddenUsername: 'Justus Turyasingura', displayedUsername: 'E136', password: 'Justus028' },
+    { hiddenUsername: 'Marvin Mwesigwa Kirabira', displayedUsername: 'E132', password: 'Marvin029' },
+    { hiddenUsername: 'Moreen Kharunda', displayedUsername: 'E027', password: 'Moreen030' },
+    { hiddenUsername: 'Moses Kusiima', displayedUsername: 'E115', password: 'Moses031' },
+    { hiddenUsername: 'Moses Bwogi', displayedUsername: 'E144', password: 'Moses032' },
+    { hiddenUsername: 'Nicholas Gombe', displayedUsername: 'E018', password: 'Nicholas033' },
+    { hiddenUsername: 'Oswald Natumanya', displayedUsername: 'E056', password: 'Oswald034' },
+    { hiddenUsername: 'Paul Muwanguzi', displayedUsername: 'E137', password: 'Paul035' },
+    { hiddenUsername: 'Rashiidah Nanyanga', displayedUsername: 'E037', password: 'Rashiidah036' },
+    { hiddenUsername: 'Ratibu Mutebi', displayedUsername: 'E076', password: 'Ratibu037' },
+    { hiddenUsername: 'Regina Ntegyereize', displayedUsername: 'E015', password: 'Regina038' },
+    { hiddenUsername: 'Richard Wycliff Kanyike', displayedUsername: 'E040', password: 'Richard039' },
+    { hiddenUsername: 'Robert Waibi', displayedUsername: 'E010', password: 'Robert040' },
+    { hiddenUsername: 'Samantha Wamboga', displayedUsername: 'E151', password: 'Samantha041' },
+    { hiddenUsername: 'Stephen Kaziba', displayedUsername: 'E024', password: 'Stephen042' },
+    { hiddenUsername: 'Stuart Kanyesigye', displayedUsername: 'E152', password: 'Stuart043' },
+    { hiddenUsername: 'Tendo Ffazila', displayedUsername: 'E145', password: 'Tendo044' },
+    { hiddenUsername: 'Tonny Wrightson Omeda', displayedUsername: 'E038', password: 'Tonny045' },
+    { hiddenUsername: 'Windsor Bukenya', displayedUsername: 'E062', password: 'Windsor046' },
+    { hiddenUsername: 'Abubaker Tonda Lutwama', displayedUsername: 'E050', password: 'Abubaker047' },
+    { hiddenUsername: 'Adam Kayongo', displayedUsername: 'E074', password: 'Adam048' },
+    { hiddenUsername: 'Annet Nannyonjo', displayedUsername: 'E047', password: 'Annet049' },
+    { hiddenUsername: 'Bill Moses Jagwer', displayedUsername: 'E051', password: 'Bill050' },
+    { hiddenUsername: 'Brian Zziwa', displayedUsername: 'E065', password: 'Brian051' },
+    { hiddenUsername: 'Christine Mpyangu Pajob', displayedUsername: 'E035', password: 'Christine052' },
+    { hiddenUsername: 'Denis Okello', displayedUsername: 'E025', password: 'Denis053' },
+    { hiddenUsername: 'Denis Jjengo', displayedUsername: 'E114', password: 'Denis054' },
+    { hiddenUsername: 'Francis Joseph Wasswa', displayedUsername: 'E077', password: 'Francis055' },
+    { hiddenUsername: 'Freedom Tukamuhebwa', displayedUsername: 'E059', password: 'Freedom056' },
+    { hiddenUsername: 'Godfrey Opumar', displayedUsername: 'E048', password: 'Godfrey057' },
+
+    { hiddenUsername: 'Alice Kyoshaba', displayedUsername: 'E071', password: 'Alice058' },
+    { hiddenUsername: 'Brandon Twinomugisha', displayedUsername: 'E063', password: 'Brandon060' },
+    { hiddenUsername: 'Brenda Mudondo', displayedUsername: 'E149', password: 'Brenda061' },
+    { hiddenUsername: 'Daniel Okiror', displayedUsername: 'E135', password: 'Daniel062' },
+    { hiddenUsername: 'Dinah Grace Anyait', displayedUsername: 'E017', password: 'Dinah063' },
+    { hiddenUsername: 'Florence Kengoma', displayedUsername: 'E068', password: 'Florence064' },
+    { hiddenUsername: 'Gilbert Wasiuku', displayedUsername: 'E042', password: 'Gilbert065' },
+    { hiddenUsername: 'Ita Mazima Musimenta', displayedUsername: 'E069', password: 'Ita066' },
+    { hiddenUsername: 'Jimmy Ayo', displayedUsername: 'E011', password: 'Jimmy067' },
+    { hiddenUsername: 'Joyce Nagujja', displayedUsername: 'E073', password: 'Joyce068' },
+    { hiddenUsername: 'Katalina Kawuma', displayedUsername: 'E147', password: 'Katalina069' },
+    { hiddenUsername: 'Leticia Atuhwera', displayedUsername: 'E023', password: 'Leticia070' },
+    { hiddenUsername: 'Obedgiu Kwokuboth Jalmeo', displayedUsername: 'E134', password: 'Obedgiu071' },
+    { hiddenUsername: 'Oskar Semweya-Musoke', displayedUsername: 'OSM', password: 'Oskar072' },
+    { hiddenUsername: 'Pamela Alyano', displayedUsername: 'E078', password: 'Pamela073' },
+    { hiddenUsername: 'Paul Mwambi', displayedUsername: 'E057', password: 'Paul074' },
+    { hiddenUsername: 'Philip Nyebaza', displayedUsername: 'E030', password: 'Philip075' },
+    { hiddenUsername: 'Providence Atubweine', displayedUsername: 'E009', password: 'Providence076' },
+    { hiddenUsername: 'Ritah Nalule Suubi', displayedUsername: 'E013', password: 'Ritah077' },
+    { hiddenUsername: 'Ritah Winnie Nakajubi', displayedUsername: 'E026', password: 'Ritah078' },
+    { hiddenUsername: 'Sandra Nabayego', displayedUsername: 'E058', password: 'Sandra079' },
+    { hiddenUsername: 'Saphrah Amumpaire', displayedUsername: 'E032', password: 'Saphrah080' },
+    { hiddenUsername: 'Stuart Angullo', displayedUsername: 'E006', password: 'Stuart081' },
+    { hiddenUsername: 'Theodomir Munana', displayedUsername: 'E031', password: 'Theodomir082' },
+    { hiddenUsername: 'Winfred Namugenyi', displayedUsername: 'E143', password: 'Winfred083' },
+    { hiddenUsername: 'Augustine Lule', displayedUsername: 'E138', password: 'Augustine059' },
+    
+];
+
+
+let found = false;
+
+                    var selectCategory = document.getElementById("roleSelect").value;
+
+                // Loop through teacher data to find a match
+                teachers.forEach(teacher => {
+                    if (teacher.displayedUsername === username && teacher.password === password && selectedRole === "teacher") {
+                        found = true;
+                        localStorage.setItem('teacherHiddenUsername', teacher.hiddenUsername);  // Save hidden username
+                        localStorage.setItem('teacherDisplayedUsername', teacher.displayedUsername);  // Save displayed username
+                        alert("Login Successful! Redirecting to the voting page...");
+                        window.location.href = '/TEACHER OF THE WEEK WEB APP/voting-page.html';  // Redirect to voting page
+                    }
+
+                    if (teacher.displayedUsername === username && teacher.password === password && selectedRole === "student") {
+                        found = true;
+                        localStorage.setItem('teacherHiddenUsername', teacher.hiddenUsername);  // Save hidden username
+                        localStorage.setItem('teacherDisplayedUsername', teacher.displayedUsername);  // Save displayed username
+                        alert("Login Successful! Redirecting to the voting page...");
+                        window.location.href = '/STUDENT OF THE WEEK WEB APP/voting-page.html';  // Redirect to voting page
+                    }
+
+
+
+
+
+                    
+                });
+
+
+    
+                if (!found) {
+                    alert("Invalid username or password. Please try again.");
+                }
+            });
+        });
+
+    </script>
+    
+    
+
+
+
+
+<script>
+    // Add ripple effect to buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('header button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Create ripple element
+            const ripple = document.createElement('span');
+            const diameter = Math.max(this.clientWidth, this.clientHeight);
+            const radius = diameter / 2;
+            
+            // Position the ripple
+            ripple.style.width = ripple.style.height = `${diameter}px`;
+            ripple.style.left = `${e.clientX - this.getBoundingClientRect().left - radius}px`;
+            ripple.style.top = `${e.clientY - this.getBoundingClientRect().top - radius}px`;
+            
+            // Add ripple class
+            ripple.classList.add('ripple');
+            
+            // Remove existing ripple
+            const existingRipple = this.querySelector('.ripple');
+            if (existingRipple) {
+                existingRipple.remove();
+            }
+            
+            // Add ripple to button
+            this.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // Add hover animation for buttons
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+});
+
+
+
+</script>
+
+        <!-- FontAwesome for Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+        <style>
+            /* Google Fonts */
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    
+    
+/* Footer Base Styling */
+.footer {
+    background-color: #004d00;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    animation: slideLabel 1.5s ease-out forwards;
+}
+
+.footer p {
+    font-size: 14px;
+    margin: px 0;
+    animation: slideLabel 1.5s ease-out forwards;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: rgb(232, 227, 203);
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s ease, margin 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    animation: slideLabel 1.5s ease-out forwards;
+}
+
+.social-icons a:hover {
+    margin: 0 12px;
+    color: rgb(255, 255, 255);
+    font-size: 26px;
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+/* Define slideLabel animation if not already defined elsewhere */
+@keyframes slideLabel {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+
+/* Tablet (768px to 992px) */
+@media screen and (max-width: 992px) {
+    .footer {
+        padding: 12px 0;
+    }
+    
+    .footer p {
+        font-size: 13px;
+    }
+    
+    .social-icons a {
+        font-size: 22px;
+        margin: 0 8px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 24px;
+        margin: 0 10px;
+    }
+}
+
+/* Mobile (576px to 768px) */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 10px 0;
+    }
+    
+    .footer p {
+        font-size: 12px;
+        margin: 4px 0;
+        padding: 0 15px; /* Add padding for better text wrapping */
+    }
+    
+    .social-icons {
+        padding: 3px 0;
+    }
+    
+    .social-icons a {
+        font-size: 20px;
+        margin: 0 7px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 22px;
+        margin: 0 8px;
+    }
+
+    .container {
+        margin-top: 40px;
+    }
+}
+
+/* Small Mobile (up to 576px) */
+@media screen and (max-width: 576px) {
+    .footer {
+        padding: 8px 0;
+    }
+    
+    .footer p {
+        font-size: 11px;
+        line-height: 1.4;
+        margin: 3px 0;
+    }
+    
+    .social-icons {
+        flex-wrap: wrap; /* Allow icons to wrap if needed */
+        padding: 2px 0;
+    }
+    
+    .social-icons a {
+        font-size: 18px;
+        margin: 0 6px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 20px;
+        margin: 0 7px;
+    }
+}
+
+/* Very Small Screens (up to 320px) */
+@media screen and (max-width: 320px) {
+    .footer {
+        padding: 6px 0;
+    }
+    
+    .footer p {
+        font-size: 10px;
+        margin: 2px 0;
+    }
+    
+    .social-icons a {
+        font-size: 16px;
+        margin: 0 5px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 18px;
+        margin: 0 6px;
+    }
+}
+
+/* Fix for devices with notches */
+@supports (padding: max(0px)) {
+    .footer {
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Fix for landscape mode on mobile */
+@media screen and (max-height: 450px) and (orientation: landscape) {
+    .footer {
+        position: relative; /* Change from fixed to relative in landscape */
+    }
+}
+
+/* Adjustments for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .footer {
+        /* Fix for iOS Safari viewport issues */
+        bottom: env(safe-area-inset-bottom, 0);
+    }
+}
+        </style>
+    
+    
+    
+            </div>
+    
+    </div>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/TaibahInternationalSchool" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://x.com/TaibahIntSchool" target="_blank" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="http://www.instagram.com/taibahintschool/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p>&copy; <span id="year"></span> Taibah International School. All Rights Reserved.</p>
+        </footer>
+</body>
+</html>

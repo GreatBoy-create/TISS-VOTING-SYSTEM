@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Voting Details</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #006400;
+            --primary-light: #007f00;
+            --primary-dark: #004d00;
+            --accent: #4CAF50;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --background: #ffffff;
+            --card-bg: #ffffff;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background);
+            color: var(--text-dark);
+            min-height: 100vh;
+            line-height: 1.6;
+            text-align: center;
+            overflow-x: hidden; /* Prevent horizontal scroll during animations */
+        }
+
+        /* Header Styling - Keeping original design */
+        .header {
+            background-color: var(--primary);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            color: var(--text-light);
+            animation: headerSlideDown 1s ease-out forwards;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.8;
+            z-index: 1;
+            animation: fadeIn 2s ease;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            animation: logoZoomIn 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+        
+        .logo-badge {
+            background: var(--primary-light);
+            background: transparent;
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border: none;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .logo-badge:hover {
+            transform: scale(1.01) rotate(2deg);
+        }
+        
+        .logo {
+            width: 290px;
+            height: 100px;
+            object-fit: contain;
+        }
+        
+        /* If no logo image exists, use a fallback icon */
+        .logo-icon {
+            font-size: 25px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: linear-gradient(90deg, #ffffff, #a5e0a8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            animation: titleSlideIn 1s ease-out 0.3s both;
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: textFadeIn 1s ease 0.6s both;
+        }
+        
+        /* Main Container - Changed to white with border */
+        .container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border: 1px solid var(--border-color);
+            animation: containerAppear 1s ease 0.8s both;
+            transform-origin: center top;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Student Name Header - Changed to green */
+        .student-header {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            text-align: center;
+            animation: slideInFromTop 0.8s ease 1s both;
+        }
+        
+        .student-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .student-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+            animation: lineGrow 0.6s ease 1.5s both;
+        }
+        
+        #studentName {
+            color: var(--primary);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        #studentName::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(76, 175, 80, 0.1);
+            z-index: -1;
+            animation: highlightName 0.8s ease 1.8s forwards;
+        }
+        
+        /* Navigation */
+        .navigation {
+            margin: 1.5rem 0;
+            text-align: center;
+            animation: fadeInUp 0.8s ease 2s both;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-button i {
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: var(--primary-light);
+        }
+        
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+        
+        .back-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1) translate(-50%, -50%);
+            animation: ripple 1s infinite;
+        }
+        
+        /* Submission Cards - Changed to white with border */
+        .submission-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent);
+            border: 1px solid var(--border-color);
+            animation: fadeInStagger 0.5s ease-out both;
+            opacity: 0;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-left-width 0.3s ease;
+        }
+        
+        .submission-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-left-width: 8px;
+        }
+        
+        .submission-card:nth-child(1) { animation-delay: 1.2s; }
+        .submission-card:nth-child(2) { animation-delay: 1.4s; }
+        .submission-card:nth-child(3) { animation-delay: 1.6s; }
+        .submission-card:nth-child(4) { animation-delay: 1.8s; }
+        .submission-card:nth-child(5) { animation-delay: 2.0s; }
+        
+        .submission-card p {
+            margin: 0.6rem 0;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+            color: var(--text-dark);
+            transition: transform 0.3s ease;
+        }
+        
+        .submission-card:hover p {
+            transform: translateX(3px);
+        }
+        
+        .submission-card p i {
+            min-width: 20px;
+            margin-right: 0.6rem;
+            color: var(--primary);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .submission-card:hover p i {
+            transform: scale(1.2);
+            color: var(--accent);
+        }
+        
+        .submission-card p strong {
+            min-width: 140px;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .submission-card hr {
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            margin: 1rem 0 0.5rem;
+            transition: width 0.4s ease;
+            width: 100%;
+        }
+        
+        .submission-card:hover hr {
+            width: 50%;
+            background: var(--accent);
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .submission-card:hover .date-badge {
+            transform: translateY(-3px);
+            background: var(--primary);
+        }
+        
+        /* No votes message */
+        .no-votes {
+            padding: 3rem 1rem;
+            text-align: center;
+            animation: pulseAnimation 2s infinite alternate;
+        }
+        
+        .no-votes i {
+            font-size: 3rem;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+            animation: iconBounce 2s ease infinite;
+        }
+        
+        .no-votes p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            animation: textFadeIn 1s ease 1s both;
+        }
+        
+        /* Footer */
+        .footer {
+
+            animation: fadeInUp 0.8s ease 2.2s both;
+        }
+        
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes headerSlideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        @keyframes logoZoomIn {
+            from { 
+                transform: scale(0.5); 
+                opacity: 0; 
+            }
+            to { 
+                transform: scale(1); 
+                opacity: 1; 
+            }
+        }
+        
+        @keyframes titleSlideIn {
+            from { 
+                transform: translateX(-50px); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateX(0); 
+                opacity: 1; 
+            }
+        }
+        
+        @keyframes textFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes containerAppear {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.95);
+            }
+            70% { 
+                transform: scale(1.02);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInFromTop {
+            from { 
+                transform: translateY(-30px); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+            }
+        }
+        
+        @keyframes lineGrow {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+        
+        @keyframes highlightName {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(1) translate(-50%, -50%);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(20) translate(-50%, -50%);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeInStagger {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulseAnimation {
+            from { opacity: 0.7; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes floatingAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        /* Add floating animation to logo on page load */
+        .logo-badge {
+            animation: floatingAnimation 3s ease-in-out infinite;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .student-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .submission-card {
+                padding: 1.2rem;
+            }
+            
+            .submission-card p {
+                flex-direction: column;
+            }
+            
+            .submission-card p strong {
+                margin-bottom: 0.3rem;
+                min-width: auto;
+            }
+        }
+        
+        /* Add a scroll animation observer for additional effects */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Ripple effect styles */
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple-anim 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-anim {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+        
+        button, .back-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+/* Root Variables */
+:root {
+    --primary: #006400;
+    --primary-light: #007f00;
+    --primary-dark: #004d00;
+    --accent: #4CAF50;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --background: #ffffff;
+    --card-bg: #ffffff;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --border-color: #e0e0e0;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--background);
+    color: var(--text-dark);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container with Green Border */
+.container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border: 2px solid #02590f; /* Green border as requested */
+    animation: containerAppear 1s ease 0.8s both;
+    transform-origin: center top;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Student Header */
+.student-header {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+    text-align: center;
+    animation: slideInFromTop 0.8s ease 1s both;
+}
+
+.student-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.student-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 3px;
+    animation: lineGrow 0.6s ease 1.5s both;
+}
+
+#studentName {
+    color: var(--primary);
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+#studentName::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(76, 175, 80, 0.1);
+    z-index: -1;
+    animation: highlightName 0.8s ease 1.8s forwards;
+}
+
+/* Navigation */
+.navigation {
+    margin: 1.5rem 0;
+    text-align: center;
+    animation: fadeInUp 0.8s ease 2s both;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    background: #02590f; /* Match the border color */
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-button i {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    background: #038c07;
+}
+
+.back-button:hover i {
+    transform: translateX(-3px);
+}
+
+.back-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1) translate(-50%, -50%);
+    animation: ripple 1s infinite;
+}
+
+/* Submission Cards */
+.submission-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--accent);
+    border: 1px solid var(--border-color);
+    animation: fadeInStagger 0.5s ease-out both;
+    opacity: 0;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-left-width 0.3s ease;
+}
+
+.submission-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-left-width: 8px;
+}
+
+.submission-card:nth-child(1) { animation-delay: 1.2s; }
+.submission-card:nth-child(2) { animation-delay: 1.4s; }
+.submission-card:nth-child(3) { animation-delay: 1.6s; }
+.submission-card:nth-child(4) { animation-delay: 1.8s; }
+.submission-card:nth-child(5) { animation-delay: 2.0s; }
+
+.submission-card p {
+    margin: 0.6rem 0;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.4;
+    color: var(--text-dark);
+    transition: transform 0.3s ease;
+}
+
+.submission-card:hover p {
+    transform: translateX(3px);
+}
+
+.submission-card p i {
+    min-width: 20px;
+    margin-right: 0.6rem;
+    color: var(--primary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.submission-card:hover p i {
+    transform: scale(1.2);
+    color: var(--accent);
+}
+
+.submission-card p strong {
+    min-width: 140px;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.submission-card hr {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    margin: 1rem 0 0.5rem;
+    transition: width 0.4s ease;
+    width: 100%;
+}
+
+.submission-card:hover hr {
+    width: 50%;
+    background: var(--accent);
+}
+
+/* No votes message */
+.no-votes {
+    padding: 3rem 1rem;
+    text-align: center;
+    animation: pulseAnimation 2s infinite alternate;
+}
+
+.no-votes i {
+    font-size: 3rem;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    animation: iconBounce 2s ease infinite;
+}
+
+.no-votes p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    animation: textFadeIn 1s ease 1s both;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes containerAppear {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.95);
+    }
+    70% { 
+        transform: scale(1.02);
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInFromTop {
+    from { 
+        transform: translateY(-30px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+@keyframes lineGrow {
+    from { width: 0; }
+    to { width: 100px; }
+}
+
+@keyframes highlightName {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(20) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInStagger {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseAnimation {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Comprehensive Responsive Design */
+/* Large Desktop (1200px and above) */
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 80%;
+        max-width: 900px;
+        padding: 2.5rem;
+    }
+    
+    .student-header h2 {
+        font-size: 2rem;
+    }
+    
+    .back-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+/* Desktop (992px to 1199px) */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        width: 85%;
+        max-width: 850px;
+    }
+}
+
+/* Tablet (768px to 991px) */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: 90%;
+        padding: 1.8rem;
+    }
+    
+    .student-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .student-header::after {
+        width: 80px;
+    }
+    
+    .back-button {
+        font-size: 0.85rem;
+    }
+    
+    .submission-card {
+        padding: 1.3rem;
+    }
+}
+
+/* Small Tablet (576px to 767px) */
+@media screen and (max-width: 767px) {
+    .container {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .student-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .student-header::after {
+        width: 70px;
+    }
+    
+    .submission-card {
+        padding: 1.2rem;
+    }
+    
+    .submission-card p {
+        flex-direction: column;
+    }
+    
+    .submission-card p strong {
+        margin-bottom: 0.3rem;
+        min-width: auto;
+    }
+    
+    .back-button {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .no-votes i {
+        font-size: 2.5rem;
+    }
+    
+    .no-votes p {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile (375px to 575px) */
+@media screen and (max-width: 575px) {
+    .container {
+        width: 95%;
+        padding: 1.2rem;
+        margin: 1.5rem auto;
+        border-width: 1.5px; /* Slightly thinner border on mobile */
+    }
+    
+    .student-header {
+        margin-bottom: 1.5rem;
+    }
+    
+    .student-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .student-header::after {
+        width: 60px;
+        height: 2px;
+    }
+    
+    .back-button {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.9rem;
+    }
+    
+    .back-button i {
+        margin-right: 0.3rem;
+    }
+    
+    .submission-card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .submission-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile (Up to 374px) */
+@media screen and (max-width: 374px) {
+    .container {
+        width: 95%;
+        padding: 1rem;
+        margin: 1rem auto;
+        border-width: 1px;
+    }
+    
+    .student-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .student-header::after {
+        width: 50px;
+    }
+    
+    .back-button {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .submission-card {
+        padding: 0.8rem;
+    }
+    
+    .submission-card p {
+        font-size: 0.85rem;
+    }
+    
+    .no-votes {
+        padding: 2rem 0.8rem;
+    }
+    
+    .no-votes i {
+        font-size: 2rem;
+    }
+    
+    .no-votes p {
+        font-size: 0.9rem;
+    }
+
+
+}
+
+@media (max-width: 360px) {
+    .header-content h1{
+        font-size: 18px;
+        margin-top: -20px;
+        }
+
+        .logo {
+            width: 90px;
+        }
+}
+
+
+/* Small Height */
+@media screen and (max-height: 574px) {
+    .container {
+        margin: 1rem auto;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+}
+
+/* Landscape orientation */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .container {
+        width: 90%;
+        max-width: 700px;
+        max-height: 70vh;
+        overflow-y: auto;
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+    
+    .student-header {
+        margin-bottom: 1rem;
+    }
+    
+    .student-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .navigation {
+        margin: 0.8rem 0;
+    }
+}
+
+/* High-resolution devices */
+@media screen and (min-resolution: 192dpi) {
+    .container {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+    
+    .back-button {
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Dark mode support if user has set it */
+@media (prefers-color-scheme: dark) {
+    .container {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Print styles */
+@media print {
+    .container {
+        box-shadow: none;
+        border: 1px solid #000;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .back-button {
+        display: none;
+    }
+    
+    .submission-card {
+        break-inside: avoid;
+    }
+
+
+
+
+
+
+
+    /* Define slideLabel animation if not already defined elsewhere */
+@keyframes slideLabel {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+
+/* Tablet (768px to 992px) */
+@media screen and (max-width: 992px) {
+    .footer {
+        padding: 12px 0;
+    }
+    
+    .footer p {
+        font-size: 13px;
+    }
+    
+    .social-icons a {
+        font-size: 22px;
+        margin: 0 8px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 24px;
+        margin: 0 10px;
+    }
+}
+
+/* Mobile (576px to 768px) */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 10px 0;
+    }
+    
+    .footer p {
+        font-size: 12px;
+        margin: 4px 0;
+        padding: 0 15px; /* Add padding for better text wrapping */
+    }
+    
+    .social-icons {
+        padding: 3px 0;
+    }
+    
+    .social-icons a {
+        font-size: 20px;
+        margin: 0 7px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 22px;
+        margin: 0 8px;
+    }
+
+    .container {
+        margin-top: 40px;
+    }
+}
+
+/* Small Mobile (up to 576px) */
+@media screen and (max-width: 576px) {
+    .footer {
+        padding: 8px 0;
+    }
+    
+    .footer p {
+        font-size: 11px;
+        line-height: 1.4;
+        margin: 3px 0;
+    }
+    
+    .social-icons {
+        flex-wrap: wrap; /* Allow icons to wrap if needed */
+        padding: 2px 0;
+    }
+    
+    .social-icons a {
+        font-size: 18px;
+        margin: 0 6px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 20px;
+        margin: 0 7px;
+    }
+}
+
+/* Very Small Screens (up to 320px) */
+@media screen and (max-width: 320px) {
+    .footer {
+        padding: 6px 0;
+    }
+    
+    .footer p {
+        margin: 2px 0;
+    }
+    
+    .social-icons a {
+        font-size: 12px;
+        margin: 0 5px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 18px;
+        margin: 0 6px;
+    }
+}
+
+/* Fix for devices with notches */
+@supports (padding: max(0px)) {
+    .footer {
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Fix for landscape mode on mobile */
+@media screen and (max-height: 450px) and (orientation: landscape) {
+    .footer {
+        position: relative; /* Change from fixed to relative in landscape */
+    }
+}
+
+/* Adjustments for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .footer {
+        /* Fix for iOS Safari viewport issues */
+        bottom: env(safe-area-inset-bottom, 0);
+    }
+}
+}
+
+      /* Tablet (768px to 992px) */
+@media screen and (max-width: 992px) {
+    .footer {
+        padding: 12px 0;
+    }
+    
+    .footer p {
+        font-size: 13px;
+    }
+    
+    .social-icons a {
+        font-size: 22px;
+        margin: 0 8px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 24px;
+        margin: 0 10px;
+    }
+}
+
+/* Mobile (576px to 768px) */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 10px 0;
+    }
+    
+    .footer p {
+        font-size: 12px;
+        margin: 4px 0;
+        padding: 0 15px; /* Add padding for better text wrapping */
+    }
+    
+    .social-icons {
+        padding: 3px 0;
+    }
+    
+    .social-icons a {
+        font-size: 20px;
+        margin: 0 7px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 22px;
+        margin: 0 8px;
+    }
+
+    .container {
+        margin-top: 40px;
+    }
+}
+
+/* Small Mobile (up to 576px) */
+@media screen and (max-width: 576px) {
+    .footer {
+        padding: 8px 0;
+    }
+    
+    .footer p {
+        font-size: 11px;
+        line-height: 1.4;
+        margin: 3px 0;
+    }
+    
+    .social-icons {
+        flex-wrap: wrap; /* Allow icons to wrap if needed */
+        padding: 2px 0;
+    }
+    
+    .social-icons a {
+        font-size: 18px;
+        margin: 0 6px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 20px;
+        margin: 0 7px;
+    }
+}
+
+/* Very Small Screens (up to 320px) */
+@media screen and (max-width: 320px) {
+    .footer {
+        padding: 6px 0;
+    }
+    
+    .footer p {
+        font-size: 10px;
+        margin: 2px 0;
+    }
+    
+    .social-icons a {
+        font-size: 16px;
+        margin: 0 5px;
+    }
+    
+    .social-icons a:hover {
+        font-size: 18px;
+        margin: 0 6px;
+    }
+}
+
+/* Fix for devices with notches */
+@supports (padding: max(0px)) {
+    .footer {
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Fix for landscape mode on mobile */
+@media screen and (max-height: 450px) and (orientation: landscape) {
+    .footer {
+        position: relative; /* Change from fixed to relative in landscape */
+    }
+}
+
+/* Adjustments for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .footer {
+        /* Fix for iOS Safari viewport issues */
+        bottom: env(safe-area-inset-bottom, 0);
+    }
+}  
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-badge">
+                    <!-- If the image exists, it will display; otherwise, the icon will show -->
+                    <img src="Tiss-logo.jpeg" alt="School Logo" class="logo" onerror="this.style.display='none'; document.getElementById('fallbackIcon').style.display='block'">
+                    <i id="fallbackIcon" class="fas fa-graduation-cap logo-icon" style="display:none"></i>
+                </div>
+            </div>
+            <h1>Student Recognition Program</h1>
+            <p>Detailed voting history for nominated student</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="student-header">
+            <h2>Voting History for <span id="studentName"></span></h2>
+        </div>
+        
+        <div id="studentVotesContainer">
+            <!-- Voting history for a specific student -->
+        </div>
+        
+        <div class="navigation">
+            <a href="student-of-the-week-admin.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2024 School Recognition System. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Get the selected student's name from localStorage
+        let selectedStudent = localStorage.getItem("selectedStudent");
+
+        // Load form submissions and filter by selected student
+        let formSubmissions = JSON.parse(localStorage.getItem("formSubmissions")) || [];
+        let studentVotes = formSubmissions.filter(submission => submission.name === selectedStudent);
+
+        // Render the voting history
+        function displayVotingHistory() {
+            let studentVotesContainer = document.getElementById("studentVotesContainer");
+            let studentNameElement = document.getElementById("studentName");
+            studentNameElement.innerText = selectedStudent;
+
+            studentVotesContainer.innerHTML = ""; // Clear any previous content
+
+            if (studentVotes.length === 0) {
+                studentVotesContainer.innerHTML = `
+                    <div class="no-votes">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>No votes found for this student.</p>
+                    </div>`;
+                return;
+            }
+
+            studentVotes.forEach(submission => {
+                let submissionCard = document.createElement("div");
+                submissionCard.classList.add("submission-card");
+                
+                // Format date nicely if possible
+                let formattedDate = submission.date;
+                try {
+                    const dateObj = new Date(submission.date);
+                    formattedDate = dateObj.toLocaleString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                } catch(e) {
+                    // If date formatting fails, use the original string
+                    console.log("Date formatting failed, using original");
+                }
+                
+                submissionCard.innerHTML = `
+                    <p><i class="fas fa-user"></i><strong>Voted Student:</strong> ${submission.name}</p>
+                    <p><i class="fas fa-graduation-cap"></i><strong>Department:</strong> ${submission.classAndStream}</p>
+                    <p><i class="fas fa-comment"></i><strong>Reason:</strong> ${submission.reason}</p>
+                    <p><i class="fas fa-chalkboard-teacher"></i><strong>Voting Teacher:</strong> ${submission.teachersName}</p>
+                    <p><i class="fas fa-id-badge"></i><strong>Teacher's ID:</strong> ${submission.teacherID || 'N/A'}</p>
+                    <hr>
+                    <div class="date-badge"><i class="fas fa-calendar-alt"></i> <strong>Submitted on:</strong> ${submission.date}</div>
+                `;
+                studentVotesContainer.appendChild(submissionCard);
+            });
+        }
+
+        // Load the voting history
+        displayVotingHistory();
+        
+        // Add dynamic animations to elements when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add dynamic animations to elements as they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            // Apply animation class to all cards after creation
+            document.querySelectorAll('.submission-card').forEach(card => {
+                card.classList.add('animate-on-scroll');
+                observer.observe(card);
+                
+                // Add hover animation to icons within cards
+                card.querySelectorAll('i').forEach(icon => {
+                    icon.addEventListener('mouseover', function() {
+                        this.style.transform = 'scale(1.3) rotate(5deg)';
+                        this.style.color = '#4CAF50';
+                    });
+                    
+                    icon.addEventListener('mouseout', function() {
+                        this.style.transform = '';
+                        this.style.color = '';
+                    });
+                });
+            });
+            
+            // Add pulsing animation to student name when clicked
+            const studentName = document.getElementById('studentName');
+            if (studentName) {
+                studentName.addEventListener('click', function() {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = 'highlightName 0.8s ease forwards';
+                    }, 10);
+                });
+            }
+            
+            // Add ripple effect to buttons
+            document.querySelectorAll('button, .back-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple-effect');
+                    
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+                    ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+            
+            // Add typing animation to header
+            setTimeout(() => {
+                const header = document.querySelector('.header p');
+                if (header) {
+                    const text = header.textContent;
+                    header.textContent = '';
+                    
+                    let i = 0;
+                    const typeWriter = () => {
+                        if (i < text.length) {
+                            header.textContent += text.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, 30);
+                        }
+                    };
+                    
+                    typeWriter();
+                }
+            }, 1500);
+            
+            // Add parallax effect to the header
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const header = document.querySelector('.header');
+                
+                if (header && scrollPosition < 400) {
+                    header.style.backgroundPosition = `center ${scrollPosition * 0.4}px`;
+                }
+            });
+            
+            // Add floating animation to the logo
+            const logoBadge = document.querySelector('.logo-badge');
+            if (logoBadge) {
+                logoBadge.addEventListener('mouseover', function() {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = 'floatingAnimation 3s ease-in-out infinite';
+                    }, 10);
+                });
+            }
+            
+            // Staggered animation for multiple cards
+            document.querySelectorAll('.submission-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + (index * 150));
+            });
+        });
+    </script>
+</body>
+</html>
