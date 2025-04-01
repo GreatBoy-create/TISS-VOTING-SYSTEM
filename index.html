@@ -1191,21 +1191,22 @@ let found = false;
 
                 // Loop through teacher data to find a match
                 teachers.forEach(teacher => {
-                    if (teacher.displayedUsername === username && teacher.password === password && selectedRole === "teacher") {
-                        found = true;
-                        localStorage.setItem('teacherHiddenUsername', teacher.hiddenUsername);  // Save hidden username
-                        localStorage.setItem('teacherDisplayedUsername', teacher.displayedUsername);  // Save displayed username
-                        alert("Login Successful! Redirecting to the voting page...");
-                        window.location.href = '/TEACHER OF THE WEEK WEB APP/voting-page.html';  // Redirect to voting page
-                    }
+if (teacher.displayedUsername === username && teacher.password === password && selectedRole === "teacher") {
+    found = true;
+    localStorage.setItem('teacherHiddenUsername', teacher.hiddenUsername);  // Save hidden username
+    localStorage.setItem('teacherDisplayedUsername', teacher.displayedUsername);  // Save displayed username
+    alert("Login Successful! Redirecting to the voting page...");
+    window.location.href = 'teacher-of-the-week-app/voting-page.html';  // Corrected path
+}
 
-                    if (teacher.displayedUsername === username && teacher.password === password && selectedRole === "student") {
-                        found = true;
-                        localStorage.setItem('teacherHiddenUsername', teacher.hiddenUsername);  // Save hidden username
-                        localStorage.setItem('teacherDisplayedUsername', teacher.displayedUsername);  // Save displayed username
-                        alert("Login Successful! Redirecting to the voting page...");
-                        window.location.href = '/STUDENT OF THE WEEK WEB APP/voting-page.html';  // Redirect to voting page
-                    }
+if (teacher.displayedUsername === username && teacher.password === password && selectedRole === "student") {
+    found = true;
+    localStorage.setItem('teacherHiddenUsername', teacher.hiddenUsername);  // Save hidden username
+    localStorage.setItem('teacherDisplayedUsername', teacher.displayedUsername);  // Save displayed username
+    alert("Login Successful! Redirecting to the voting page...");
+    window.location.href = 'student-of-the-week-app/voting-page.html';  // Corrected path
+}
+
 
 
 
